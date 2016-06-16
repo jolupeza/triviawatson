@@ -4,6 +4,7 @@
 		<script type="text/javascript" src="<?php echo base_url(); ?>assets/front/tpl_adinspector/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="<?php echo base_url(); ?>assets/front/tpl_adinspector/js/jquery.timeTo.min.js"></script>
 		<script type="text/javascript" src="<?php echo base_url(); ?>assets/front/tpl_adinspector/js/bootstrap-progressbar.min.js"></script>
+
 		<!--script type="text/javascript" src="<?php //echo base_url(); ?>assets/front/tpl_adinspector/js/jquery.validate.min.js"></script-->
 		<!--script type="text/javascript" src="<?php //echo base_url(); ?>assets/front/tpl_adinspector/js/messages_es.js"></script-->
 

@@ -14,7 +14,8 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://feria.local/';
+$config['base_url'] = 'http://feria.local/';
+// $config['base_url']	= 'http://feria.local.192.168.0.36.xip.io/';
 
 /*
 |--------------------------------------------------------------------------

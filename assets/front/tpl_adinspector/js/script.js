@@ -1,7 +1,11 @@
 var j = jQuery.noConflict();
 
 (function($){
+	var $body = j('body');
+	var $win = j(window);
+
 	j(document).on("ready", function(){
+		heighFooter();
 
 		j('#form-login').formValidation({
 			// To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
@@ -95,24 +99,32 @@ var j = jQuery.noConflict();
 			nextQuestion();
 		});
 
-		j('body').on('click', 'input:radio', function() {
-			j('#otherQuestion').tooltip('destroy');
+		j('body').on('click', '.js-res', function(ev) {
+			ev.preventDefault();
+			var $this = j(this);
+			var result = $this.data('result');
+			var alternatives = j('.js-res');
+			var checks = j('.Question-check');
 
-			j('#frm-questions article').removeClass('bg-green');
+			// $this.addClass('active');
 
-			j(this).parent().parent().addClass('bg-green');
+			if (result == '0') {
+				$this.addClass('Question-button--bad');
 
-			if (j(this).data('result') == '0') {
-				j(this).next().next().css('display', 'block');
-				j('#frm-questions article').each(function(){
-					var radio = j(this).find('input:radio');
-					if ( radio.data('result') == '1') {
-						radio.next().next().removeClass('glyphicon-remove').addClass('glyphicon-ok').css({'display' : 'block', 'color' : 'green'});
+				j.each(alternatives, function(){
+					var res = j(this).data('result');
+
+					if ( res == '1') {
+						j(this).addClass('Question-button--good');
+					} else {
+						j(this).addClass('Question-button--bad');
 					}
 				});
 			} else {
-				j(this).next().next().removeClass('glyphicon-remove').addClass('glyphicon-ok').css({'display' : 'block', 'color' : 'green'});
+				$this.addClass('Question-button--good');
 			}
+
+			checks.removeClass('hidden');
 
 			setTimeout(function() {
 				nextQuestion();
@@ -121,7 +133,7 @@ var j = jQuery.noConflict();
 
 		j('.countdown').timeTo(
 			{
-				seconds: 15,
+				seconds: 20,
 				displayHours: false,
 				fontSize: 48
 			}, function(){
@@ -143,13 +155,13 @@ var j = jQuery.noConflict();
 
 	function nextQuestion()
 	{
-		if (j('input:radio').is(':checked')) {
+		/*if (j('input:radio').is(':checked')) {
 			j(this).tooltip('hide');
 		} else {
 			j(this).attr('title', 'Debes seleccionar una alternativa');
 			j(this).tooltip('show');
 			return;
-		}
+		}*/
 
 		j('.preload').css('display', 'block');
 
@@ -162,5 +174,13 @@ var j = jQuery.noConflict();
 				j('.preload').css('display', 'none');
 			}
 		});
+	}
+
+	function heighFooter() {
+		var footer = j('.Footer');
+		var ratio = 0.48;
+
+		var heig = $win.width() * ratio;
+		footer.css('height', heig + 'px');
 	}
 })(jQuery);
