@@ -6,7 +6,9 @@
 
 <div class="Premio-wrapper">
 
-    <h4 class="text-center">Tu premio es: <br /><strong>Consultoría Gratuita</strong>. <br> Premio válido hasta el 31 de Julio del 2015.</h4>
+    <h2 class="text-center">¡Gracias por participar!</h2>
+
+    <h4 class="text-center">Tu premio es: <br /><strong>Consultoría Gratuita</strong></h4>
 
     <p class="text-center"><a href="<?php echo site_url(); ?>" class="btn-purple">Volver</a></p>
 
